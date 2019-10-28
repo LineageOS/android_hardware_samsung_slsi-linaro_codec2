@@ -28,6 +28,7 @@
 #ifndef _EXYNOS_VIDEO_OSAL_H_
 #define _EXYNOS_VIDEO_OSAL_H_
 #ifdef USE_EPOLL
+#include <bits/epoll_event.h>
 #include <sys/epoll.h>
 #else
 #include <sys/poll.h>
