@@ -133,7 +133,7 @@ ExynosC2ComponentInfo::ExynosC2ComponentInfo() : ExynosLog()  {
 
     android::MediaCodecsXmlParser parser;
 
-    parser.parseXmlFilesInSearchDirs({ "media_codecs_c2.xml" }, { "vendor/etc" });
+    parser.parseXmlFilesInSearchDirs({ "media_codecs_c2.xml" }, { "/vendor/etc" });
     if (parser.getParsingStatus() != android::OK) {
         ExynosLogW("[%s] can not find \"media_codecs_c2.xml\"", __FUNCTION__);
         return;
