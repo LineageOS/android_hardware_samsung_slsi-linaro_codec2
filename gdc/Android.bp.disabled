@@ -1,22 +1,5 @@
-package {
-    default_applicable_licenses: ["hardware_samsung_slsi-linaro_codec2_csc_license"],
-}
-
-// Added automatically by a large-scale-change
-// See: http://go/android-license-faq
-license {
-    name: "hardware_samsung_slsi-linaro_codec2_csc_license",
-    visibility: [":__subpackages__"],
-    license_kinds: [
-        "SPDX-license-identifier-Apache-2.0",
-    ],
-    license_text: [
-        "NOTICE",
-    ],
-}
-
 cc_library_headers {
-    name: "libexynosc2_csc_headers",
+    name: "libexynosc2_gdc_headers",
     proprietary: true,
     compile_multilib: "both",
     export_include_dirs: [
@@ -33,7 +16,7 @@ cc_library_headers {
 }
 
 cc_library_static {
-    name: "libExynosCSC",
+    name: "libExynosGDCWrapper",
     proprietary: true,
     cflags: [
         "-fPIC",
@@ -44,24 +27,19 @@ cc_library_static {
         "-std=c++2a",
     ],
     header_libs: [
-        "libexynosc2_csc_headers",
+        "libexynosc2_gdc_headers",
         "libexynos_headers",
     ],
     static_libs: [
         "libExynosC2OSAL",
     ],
     shared_libs: [
-        "libacryl",
         "libcutils",
         "libutils",
         "libhardware",
-        "libhidlbase",
-        "libexynosv4l2",
-        "libion_exynos",
-        "libui",
-        "libexynosgraphicbuffer",
+        "libexynosgdc",
     ],
     srcs: [
-        "ExynosCSC.cpp",
+        "ExynosGDCWrapper.cpp",
     ],
 }

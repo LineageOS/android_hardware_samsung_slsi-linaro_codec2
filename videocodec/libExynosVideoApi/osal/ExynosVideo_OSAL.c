@@ -2544,7 +2544,11 @@ int Codec_OSAL_Epoll_Regist(
         struct epoll_event event;
 
         memset(&event, 0, sizeof(event));
+#if defined(USE_ANDROID)
+        event.data = pollfd[i].fd;
+#else
         event.data.fd = pollfd[i].fd;
+#endif
         event.events  = pollfd[i].events;
 
         err = epoll_ctl(pEpoll->epfd, EPOLL_CTL_ADD, pollfd[i].fd, &event);
@@ -2587,7 +2591,11 @@ int Codec_OSAL_Epoll(
     cnt = epoll_wait(pEpoll->epfd, events, CODEC_OSAL_MAX_POLLFD, time);
     if (cnt > 0) {
         for (i = 0; i < cnt; i++) {
+#if defined(USE_ANDROID)
+            pollfd[i].fd        = events[i].data;
+#else
             pollfd[i].fd        = events[i].data.fd;
+#endif
             pollfd[i].revents   = events[i].events;
         }
     }
@@ -2614,7 +2622,11 @@ void Codec_OSAL_Epoll_Destroy(void *pHandle) {
         struct epoll_event event;
 
         memset(&event, 0, sizeof(event));
+#if defined(USE_ANDROID)
+        event.data = pEpoll->pollfds[i].fd;
+#else
         event.data.fd = pEpoll->pollfds[i].fd;
+#endif
         event.events  = pEpoll->pollfds[i].events;
 
         err = epoll_ctl(pEpoll->epfd, EPOLL_CTL_DEL, pEpoll->pollfds[i].fd, &event);

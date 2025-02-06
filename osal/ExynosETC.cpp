@@ -19,7 +19,7 @@
 #include <system/graphics.h>
 #include "exynos_format.h"
 
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 #include "ExynosDef.h"
 #include "C2ExynosParam.h"
 

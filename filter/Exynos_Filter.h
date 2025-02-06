@@ -26,7 +26,7 @@
 
 #include "ExynosQueue.h"
 #include "ExynosThreadPool.h"
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 #include "ExynosDef.h"
 #include "ExynosFilterParam.h"
 #include "ExynosListener.h"
