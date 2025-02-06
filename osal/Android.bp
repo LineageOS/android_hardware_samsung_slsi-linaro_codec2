@@ -29,3 +29,41 @@ cc_library_headers {
         "libexynosc2_base_headers",
     ],
 }
+
+cc_library_static {
+    name: "libExynosC2OSAL",
+    proprietary: true,
+    cflags: [
+        "-fPIC",
+        "-O3",
+        "-Werror",
+        "-Wall",
+        "-std=gnu++1z",
+        "-std=c++2a",
+    ],
+    header_libs: [
+        "libexynosc2_base_headers",
+        "libexynosc2_osal_headers",
+        "libexynos_headers",
+    ],
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libcodec2",
+        "libcodec2_vndk",
+        "libhidlbase",
+        "libstagefright_foundation_defaults",
+        "libion",
+        "libion_exynos",
+        "libui",
+        "libexynosgraphicbuffer",
+    ],
+    srcs: [
+        "ExynosBufferAllocator.cpp",
+        "ExynosETC.cpp",
+        "ExynosLog.cpp",
+        "ExynosIONUtils.cpp",
+        "ExynosBufferManager.cpp",
+    ],
+}

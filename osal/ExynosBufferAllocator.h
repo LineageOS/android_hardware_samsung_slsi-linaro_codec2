@@ -26,7 +26,7 @@
 #include <utility>
 
 #include "ExynosDef.h"
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 #include "ExynosETC.h"
 
 #define LOG_ON

@@ -25,7 +25,7 @@
 #include <map>
 #include <utility>
 
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 #include "ExynosDef.h"
 #include "ExynosBufferAllocator.h"
 #include "ExynosETC.h"
