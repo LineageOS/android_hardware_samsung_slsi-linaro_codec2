@@ -1,4 +1,8 @@
 soong_namespace {
+    imports: [
+        "hardware/samsung_slsi-linaro/exynos",
+        "hardware/samsung_slsi-linaro/graphics",
+    ],
 }
 
 package {
@@ -70,3 +74,461 @@ subdirs = [
     "c2component",
     "services",
 ]
+
+cc_library_shared {
+    name: "libExynosC2ComponentStore",
+    proprietary: true,
+    srcs: ["Exynos_C2_ComponentStore.cpp"],
+    cflags: [
+        "-fPIC",
+        "-O3",
+        "-Werror",
+        "-Wall",
+        "-Wno-deprecated-enum-enum-conversion",
+        "-std=gnu++1z",
+        "-std=c++2a",
+    ],
+    header_libs: [
+        "libexynosc2_base_headers",
+        "libexynosc2_osal_headers",
+        "libexynos_headers",
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libion",
+        "libhidlbase",
+        "libcodec2",
+        "libcodec2_vndk",
+        "libsfplugin_ccodec_utils",
+        "libstagefright_xmlparser",
+        "libion",
+        "libui",
+        "libexynosgraphicbuffer",
+    ],
+    static_libs: ["libExynosC2OSAL"],
+}
+
+cc_defaults {
+    name: "libExynosC2_defaults",
+    proprietary: true,
+    srcs: [
+        "c2component/Exynos_C2_Component.cpp",
+        "c2component/Exynos_C2_IntfSetter.cpp",
+        "c2component/Exynos_C2_FilterParamCnv.cpp",
+        "filter/Exynos_Filter.cpp",
+        "filter/codec/Exynos_CodecBase_Filter.cpp",
+        "filter/csc/Exynos_CSC_Filter.cpp",
+    ],
+    header_libs: [
+        "libstagefright_foundation_headers",
+        "libexynos_headers",
+    ],
+    static_libs: [
+        "libExynosCSC",
+        "libExynosVideoCodec",
+        "libExynosC2OSAL",
+        "libExynosVideoApi2",
+        "libVendorVideoApi",
+    ],
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libhidlbase",
+        "libcodec2",
+        "libcodec2_vndk",
+        "libsfplugin_ccodec_utils",
+        "libstagefright_foundation",
+        "libstagefright_xmlparser",
+        "libExynosC2ComponentStore",
+        "libexynosv4l2",
+        "libhardware",
+        "libacryl",
+        "libui",
+        "libexynosgraphicbuffer",
+        "libion_exynos",
+    ],
+}
+
+cc_defaults {
+    name: "libExynosC2_enc_defaults",
+    defaults: ["libExynosC2_defaults"],
+    srcs: [
+        "c2component/Exynos_C2_EncComponent.cpp",
+        "filter/codec/Exynos_CodecEncBase_Filter.cpp",
+    ],
+    cflags: select(soong_config_variable("openmax", "USE_FLEXIBLE_P010"), {
+        "true": ["-DUSE_FLEXIBLE_P010"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+        "true": ["-DUSE_FULL_ST2094_40"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "GPU_TYPE"), {
+        "sgpu": [
+            "-DHW_GPU_ALIGN=256",
+            "-DYV12_ALIGN=512",
+        ],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_SUPPORT_GPU_SBWC"), {
+        "true": ["-DUSE_SUPPORT_GPU_SBWC"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_SMALL_SECURE_MEMORY"), {
+        "true": ["-DUSE_SMALL_SECURE_MEMORY"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "MAX_SECURE_RESOURCE"), {
+        any @ flag_val: ["-DMAX_SECURE_RESOURCE=" + flag_val],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_CSC_FILTER"), {
+        "true": ["-DUSE_CSC_FILTER"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_SW_CSC"), {
+        "true": ["-DUSE_SW_CSC"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "SUPPORT_MFC_ENC_RGB"), {
+        "true": ["-DSUPPORT_MFC_ENC_RGB"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_BLOB_ALLOCATOR"), {
+        "true": ["-DUSE_BLOB_ALLOCATOR"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_QUERY_HDR2SDR"), {
+        "true": ["-DUSE_QUERY_HDR2SDR"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "UNSUPPORT_10BIT"), {
+        "true": ["-DUNSUPPORT_10BIT"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_FILMGRAIN_FILTER"), {
+        "true": ["-DUSE_FILMGRAIN_FILTER"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["-DUSE_GDC_FILTER"],
+        default: [],
+    }),
+}
+
+cc_defaults {
+    name: "libExynosC2_dec_defaults",
+    defaults: ["libExynosC2_defaults"],
+    srcs: [
+        "c2component/Exynos_C2_DecComponent.cpp",
+        "filter/codec/Exynos_CodecDecBase_Filter.cpp",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2H264Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/h264/Exynos_C2_H264DecComponent.cpp",
+        "filter/codec/h264/Exynos_H264Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_h264component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2H264Enc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/h264/Exynos_C2_H264EncComponent.cpp",
+        "filter/codec/h264/Exynos_H264Enc_Filter.cpp",
+        "filter/codec/h264/Exynos_H264WFDEnc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+
+    header_libs: [
+        "libexynosc2_h264component_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2HevcDec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/hevc/Exynos_C2_HevcDecComponent.cpp",
+        "filter/codec/hevc/Exynos_HevcDec_Filter.cpp",
+        "filter/postprocess/Exynos_External_Filter.cpp",
+        "filter/postprocess/Exynos_HDR2SDR_Filter.cpp",
+        "filter/postprocess/Exynos_PostControl_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_hevccomponent_headers",
+        "libexynosc2_postprocessfilter_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2HevcEnc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/hevc/Exynos_C2_HevcEncComponent.cpp",
+        "filter/codec/hevc/Exynos_HevcEnc_Filter.cpp",
+        "filter/codec/hevc/Exynos_HevcWFDEnc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+
+    header_libs: [
+        "libexynosc2_hevccomponent_headers",
+        "libexynosc2_postprocessfilter_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2Mpeg4Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/mpeg4/Exynos_C2_Mpeg4DecComponent.cpp",
+        "filter/codec/mpeg4/Exynos_Mpeg4Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_mpeg4component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2Mpeg4Enc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/mpeg4/Exynos_C2_Mpeg4EncComponent.cpp",
+        "filter/codec/mpeg4/Exynos_Mpeg4Enc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+
+    header_libs: [
+        "libexynosc2_mpeg4component_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2H263Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/h263/Exynos_C2_H263DecComponent.cpp",
+        "filter/codec/h263/Exynos_H263Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_h263component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2H263Enc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/h263/Exynos_C2_H263EncComponent.cpp",
+        "filter/codec/h263/Exynos_H263Enc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+    header_libs: [
+        "libexynosc2_h263component_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2Vp8Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/vp8/Exynos_C2_Vp8DecComponent.cpp",
+        "filter/codec/vp8/Exynos_Vp8Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_vp8component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2Vp8Enc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/vp8/Exynos_C2_Vp8EncComponent.cpp",
+        "filter/codec/vp8/Exynos_Vp8Enc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+    header_libs: [
+        "libexynosc2_vp8component_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2Vp9Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/vp9/Exynos_C2_Vp9DecComponent.cpp",
+        "filter/codec/vp9/Exynos_Vp9Dec_Filter.cpp",
+        "filter/postprocess/Exynos_External_Filter.cpp",
+        "filter/postprocess/Exynos_HDR2SDR_Filter.cpp",
+        "filter/postprocess/Exynos_PostControl_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_vp9component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2Vp9Enc",
+    defaults: ["libExynosC2_enc_defaults"],
+
+    srcs: [
+        "c2component/vp9/Exynos_C2_Vp9EncComponent.cpp",
+        "filter/codec/vp9/Exynos_Vp9Enc_Filter.cpp",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }),
+    header_libs: [
+        "libexynosc2_vp9component_headers",
+    ] + select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosc2_gdcfilter_headers"],
+        default: [],
+    }),
+    static_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libExynosGDCWrapper"],
+        default: [],
+    }),
+    shared_libs: select(soong_config_variable("openmax", "USE_GDC"), {
+        "true": ["libexynosgdc"],
+        default: [],
+    }),
+}
+
+cc_library_shared {
+    name: "libExynosC2Mpeg2Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/mpeg2/Exynos_C2_Mpeg2DecComponent.cpp",
+        "filter/codec/mpeg2/Exynos_Mpeg2Dec_Filter.cpp",
+    ],
+    header_libs: [
+        "libexynosc2_mpeg2component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2Vc1Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/vc1/Exynos_C2_Vc1DecComponent.cpp",
+        "filter/codec/vc1/Exynos_Vc1Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_vc1component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2WmvDec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/vc1/Exynos_C2_Vc1DecComponent.cpp",
+        "filter/codec/vc1/Exynos_Vc1Dec_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_vc1component_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libExynosC2Av1Dec",
+    defaults: ["libExynosC2_dec_defaults"],
+
+    srcs: [
+        "c2component/av1/Exynos_C2_Av1DecComponent.cpp",
+        "filter/codec/av1/Exynos_Av1Dec_Filter.cpp",
+        "filter/postprocess/Exynos_External_Filter.cpp",
+        "filter/postprocess/Exynos_FilmGrain_Filter.cpp",
+        "filter/postprocess/Exynos_HDR2SDR_Filter.cpp",
+        "filter/postprocess/Exynos_PostControl_Filter.cpp",
+    ],
+
+    header_libs: [
+        "libexynosc2_vc1component_headers",
+    ],
+}

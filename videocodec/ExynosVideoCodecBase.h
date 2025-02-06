@@ -24,7 +24,7 @@
 #include <string>
 #include <sys/mman.h>
 
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 #include "ExynosBufferManager.h"
 
 #include "ExynosVideoApi.h"

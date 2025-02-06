@@ -37,3 +37,55 @@ cc_library_headers {
         "libexynosc2_osal_headers",
     ],
 }
+
+cc_library_static {
+    name: "libExynosVideoApi2",
+    proprietary: true,
+    local_include_dirs: ["mfc_headers"],
+    cflags: [
+
+        "-Wno-unused-variable",
+        "-Wno-unused-label",
+        "-Wno-unused-function",
+        "-DUSE_ANDROID",
+        "-DUSE_USER_POLL_EVENT",
+        "-DUSE_EPOLL",
+    ] + select(soong_config_variable("openmax", "MAINLINE_FEATURE_IN_SINCE_4_19"), {
+        "true": ["-DMAINLINE_FEATURE_IN_SINCE_4_19"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_HEVC_HWIP"), {
+        "true": ["-DUSE_HEVC_HWIP"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_SINGLE_PALNE_SUPPORT"), {
+        "true": ["-DUSE_SINGLE_PALNE_SUPPORT"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "FRAMERATE_THRESH_HOLD"), {
+        any @ flag_val: ["-DFRAMERATE_THRESH_HOLD=" + flag_val],
+        default: [],
+    }) + select(soong_config_variable("openmax", "SUPPORT_GPU_SBWC"), {
+        "true": ["-DUSE_SUPPORT_GPU_SBWC="],
+        default: [],
+    }),
+    header_libs: [
+        "libexynos_videoapi_headers",
+        "libexynos_headers",
+        "device_kernel_headers",
+    ],
+    shared_libs: [
+        "libion",
+        "libion_exynos",
+        "libc",
+        "liblog",
+        "libcutils",
+        "libexynosv4l2",
+        "libui",
+        "libexynosgraphicbuffer",
+    ],
+    srcs: [
+        "ExynosVideoInterface.c",
+        "common/ExynosVideoCommonApi.c",
+        "osal/ExynosVideo_OSAL.c",
+        "dec/ExynosVideoDecoder.c",
+        "enc/ExynosVideoEncoder.c",
+    ],
+}
