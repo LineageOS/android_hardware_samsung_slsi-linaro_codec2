@@ -21,7 +21,7 @@
 #include <memory>
 
 #include "ExynosDef.h"
-#include "ExynosBuffer.h"
+#include "ExynosC2Buffer.h"
 
 #define LOG_ON
 #include "ExynosLog.h"

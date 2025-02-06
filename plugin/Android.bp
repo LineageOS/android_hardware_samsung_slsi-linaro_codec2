@@ -1,0 +1,43 @@
+
+cc_library_shared {
+    name: "libc2filterplugin",
+    proprietary: true,
+    cflags: [
+        "-fPIC",
+        "-O3",
+        "-Werror",
+        "-Wall",
+        "-Wno-deprecated-enum-enum-conversion",
+        "-std=gnu++1z",
+        "-std=c++2a",
+    ],
+    header_libs: [
+        "libcodec2_hidl_plugin_headers",
+        "libgui_headers",
+        "libexynosc2_base_headers",
+        "libexynosc2_osal_headers",
+        "libexynos_headers",
+    ],
+    static_libs: [
+        "librenderfright",
+        "libExynosC2OSAL",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libcodec2",
+        "libcodec2_vndk",
+        "libutils",
+        "libcutils",
+        "libion",
+        "libEGL",
+        "libGLESv1_CM",
+        "libGLESv2",
+        "libGLESv3",
+        "libprocessgroup",
+        "libsfplugin_ccodec_utils",
+        "libsync",
+        "libui",
+    ],
+    srcs: ["Exynos_C2_FilterPlugin.cpp"],
+}

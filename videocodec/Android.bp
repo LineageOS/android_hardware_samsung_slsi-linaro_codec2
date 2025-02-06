@@ -37,3 +37,44 @@ cc_library_headers {
 subdirs = [
     "libExynosVideoApi",
 ]
+
+cc_library_static {
+    name: "libExynosVideoCodec",
+    proprietary: true,
+    cflags: [
+        "-fPIC",
+        "-O3",
+        "-Werror",
+        "-Wall",
+        "-std=gnu++1z",
+        "-std=c++2a",
+    ] + select(soong_config_variable("openmax", "USE_DEC_SW_CSC"), {
+        "true": ["-DUSE_DEC_SW_CSC"],
+        default: [],
+    }),
+    header_libs: [
+        "libexynosc2_videocodec_headers",
+        "libexynosc2_codecfilter_headers",
+        "libexynos_headers",
+    ],
+    static_libs: [
+        "libExynosC2OSAL",
+        "libExynosVideoApi2",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libhardware",
+        "libhidlbase",
+        "libexynosv4l2",
+        "libion_exynos",
+        "libui",
+        "libexynosgraphicbuffer",
+    ],
+    srcs: [
+        "ExynosVideoCodec.cpp",
+        "ExynosVideoCodecBase.cpp",
+        "ExynosVideoCodecCommon.cpp",
+        "ExynosVideoCodecDec.cpp",
+        "ExynosVideoCodecEnc.cpp",
+    ],
+}
