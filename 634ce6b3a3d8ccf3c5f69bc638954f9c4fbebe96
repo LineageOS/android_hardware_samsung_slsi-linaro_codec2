@@ -52,6 +52,24 @@
       "parentUuid": "5d130e41_1a1770ee",
       "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd862055_d589f1ae",
+        "filename": "videocodec/libExynosVideoApi/osal/ExynosVideo_OSAL.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2547,
+      "author": {
+        "id": 17401
+      },
+      "writtenOn": "2025-02-16T10:31:53Z",
+      "side": 1,
+      "message": "i had a quick look at what it does and from what i can tell no it shouldnt require a new kernel, its essentially openmax rewritten as codec2, we call the same dev/video* nodes and perform the same ioctls, except newer codecs it should in theory work, havent gotten time to dig into it, for this change however, if it works for you as it is right now i am not oposed to merging it",
+      "parentUuid": "599cb035_1ad62f90",
+      "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
