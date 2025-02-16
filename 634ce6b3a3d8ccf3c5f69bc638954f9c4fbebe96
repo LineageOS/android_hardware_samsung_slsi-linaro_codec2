@@ -70,6 +70,24 @@
       "parentUuid": "599cb035_1ad62f90",
       "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632d30c7_88fa56eb",
+        "filename": "videocodec/libExynosVideoApi/osal/ExynosVideo_OSAL.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2547,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-02-16T10:41:04Z",
+      "side": 1,
+      "message": "The only device I use this on right now (gta4xlswifi) doesn\u0027t ship official lineage yet and I still didn\u0027t get decoders working at all so there\u0027s no hurry in getting this merged.",
+      "parentUuid": "fd862055_d589f1ae",
+      "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
