@@ -51,6 +51,9 @@ cc_library_static {
     ] + select(soong_config_variable("openmax", "USE_DEC_SW_CSC"), {
         "true": ["-DUSE_DEC_SW_CSC"],
         default: [],
+    }) + select(soong_config_variable("openmax", "legacy_mfc"), {
+        "true": ["-DLEGACY_MFC"],
+        default: [],
     }),
     header_libs: [
         "libexynosc2_videocodec_headers",
