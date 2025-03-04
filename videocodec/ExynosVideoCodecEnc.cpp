@@ -364,11 +364,13 @@ ExynosVideoErrorType ExynosVideoCodecEnc::CodecEncImpl::setDefaultConfig(
         return VIDEO_ERROR_APIFAIL;
     }
 
+#ifndef LEGACY_MFC
     /* GOP size is based on interval of I-frame */
     if (std::get<ExynosVideoEncOps>(mCommonOps).Set_GopMode(mHandle, VIDEO_FRAME_I) != VIDEO_ERROR_NONE) {
         ExynosLogE("[%s] Set_GopMode() is failed", __FUNCTION__);
         return VIDEO_ERROR_APIFAIL;
     }
+#endif
 
     /* dynamic framerate */
     {
