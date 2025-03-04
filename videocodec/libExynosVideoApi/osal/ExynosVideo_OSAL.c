@@ -155,6 +155,7 @@ ExynosVideoColorFormatType Codec_OSAL_PixelFormatToColorFormat(
     case V4L2_PIX_FMT_NV21M_SBWC_10B:
         eColorFormat = VIDEO_COLORFORMAT_NV21M_10B_SBWC;
         break;
+#ifndef LEGACY_MFC
     case V4L2_PIX_FMT_NV12N:
         eColorFormat = VIDEO_COLORFORMAT_NV12;
         break;
@@ -183,6 +184,7 @@ ExynosVideoColorFormatType Codec_OSAL_PixelFormatToColorFormat(
     case V4L2_PIX_FMT_NV12NT:
         eColorFormat = VIDEO_COLORFORMAT_NV12_TILED;
         break;
+#endif
 #endif
     case V4L2_PIX_FMT_ARGB32:
         eColorFormat = VIDEO_COLORFORMAT_ARGB8888;
@@ -255,6 +257,7 @@ unsigned int Codec_OSAL_ColorFormatToPixelFormat(
     case VIDEO_COLORFORMAT_NV12M_10B_SBWC_L80:
         nPixelFormat = V4L2_PIX_FMT_NV12M_SBWCL_10B;
         break;
+#ifndef LEGACY_MFC
     case VIDEO_COLORFORMAT_NV12M_32_SBWC_L:
         nPixelFormat = V4L2_PIX_FMT_NV12M_SBWCL_32_8B;
         break;
@@ -316,6 +319,7 @@ unsigned int Codec_OSAL_ColorFormatToPixelFormat(
     case VIDEO_COLORFORMAT_NV12_10B_SBWC_L80:
         nPixelFormat = V4L2_PIX_FMT_NV12N_SBWCL_10B;
         break;
+#endif
 #endif
     case VIDEO_COLORFORMAT_ARGB8888:
         nPixelFormat = V4L2_PIX_FMT_ARGB32;

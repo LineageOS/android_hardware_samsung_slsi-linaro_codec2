@@ -355,7 +355,7 @@ ExynosErrorType ExynosVideoCodecDec::CodecDecImpl::checkRealTimeResource(
         ExynosLogE("[%s] inbuf : Try_Geometry() for real time resource is failed", __FUNCTION__);
         return EXYNOS_ERROR_UNKNOWN;
     }
-
+#ifndef LEGACY_MFC
     if (std::get<ExynosVideoDecOps>(mCommonOps).Set_RealTimePriority(mHandle, 0 /* real time */) != VIDEO_ERROR_NONE) {
         ExynosLogE("[%s] Set_RealTimePriority for real time resource is failed", __FUNCTION__);
         return EXYNOS_ERROR_UNKNOWN;
@@ -370,7 +370,7 @@ ExynosErrorType ExynosVideoCodecDec::CodecDecImpl::checkRealTimeResource(
         ExynosLogE("[%s] Get_RealTimePriority for real time resource is failed", __FUNCTION__);
         return EXYNOS_ERROR_UNKNOWN;
     }
-
+#endif
     return EXYNOS_ERROR_NONE;
 }
 
@@ -1061,9 +1061,12 @@ ExynosErrorType ExynosVideoCodecDec::updateResolution(bool bInterResolution) {
     if (mCodecImpl->mNumDispDelay < 0) {
         mCodecImpl->mNumDispDelay = mCodecImpl->mNumDPB;
         ExynosLogD("[%s] display delay info is available. it will be set as number of DPB(%d)", __FUNCTION__, mCodecImpl->mNumDispDelay);
-    } else {
+    }
+#ifndef LEGACY_MFC
+    else {
         ExynosLogD("[%s] display delay info : %d", __FUNCTION__, mCodecImpl->mNumDispDelay);
     }
+#endif
 
 #ifdef EXTRA_DPB_NUM
     if (!mCodecImpl->mIsThumbnail) {
@@ -1391,9 +1394,12 @@ void ExynosVideoCodecDec::applyConfig_OperatingRate(ExynosParams &params) {
 
     if (err == VIDEO_ERROR_NONE) {
         ExynosLogD("[%s] operating rate is %d", __FUNCTION__, param->m.value);
-    } else {
+    }
+#ifndef LEGACY_MFC
+    else {
         ExynosLogE("[%s] Set_OperatingRate(%d) is failed", __FUNCTION__, param->m.value);
     }
+#endif
 }
 
 void ExynosVideoCodecDec::applyConfig_RealTimePriority(ExynosParams &params) {
@@ -1411,9 +1417,12 @@ void ExynosVideoCodecDec::applyConfig_RealTimePriority(ExynosParams &params) {
 
     if (err == VIDEO_ERROR_NONE) {
         ExynosLogD("[%s] RealTime priority is %d", __FUNCTION__, param->m.value);
-    } else {
+    }
+#ifndef LEGACY_MFC
+    else {
         ExynosLogE("[%s] Set_RealTimePriority(%d) is failed", __FUNCTION__, param->m.value);
     }
+#endif
 }
 
 void ExynosVideoCodecDec::applyConfig(ExynosParams &params) {
