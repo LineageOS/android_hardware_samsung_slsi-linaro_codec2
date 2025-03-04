@@ -69,14 +69,23 @@ static struct {
     {VIDEO_COLORFORMAT_NV12M_SBWC_L50    , 0},
     {VIDEO_COLORFORMAT_NV12M_SBWC_L75    , 2},
     /* 10Bit multi plane format */
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12M_10B_SBWC_L40, 4},
+#endif
     {VIDEO_COLORFORMAT_NV12M_10B_SBWC_L60, 1},
     {VIDEO_COLORFORMAT_NV12M_10B_SBWC_L80, 3},
     /* 8Bit single plane format */
     {VIDEO_COLORFORMAT_NV12_SBWC_L50    , 0},
+    /* 10Bit multi plane format */
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12_SBWC_L75    , 2},
+#else
+    {VIDEO_COLORFORMAT_NV12_10B_SBWC_L60    , 2},
+#endif
     /* 10Bit single plane format */
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12_10B_SBWC_L40, 4},
+#endif
     {VIDEO_COLORFORMAT_NV12_10B_SBWC_L60, 1},
     {VIDEO_COLORFORMAT_NV12_10B_SBWC_L80, 3},
 };
@@ -86,15 +95,21 @@ static struct {
     int eNormalFormat;
 } SBWC_NONCOMP_TABLE[] = {
     {VIDEO_COLORFORMAT_NV12_SBWC,         VIDEO_COLORFORMAT_NV12},
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12_SBWC,         VIDEO_COLORFORMAT_NV12_DECOMP},
+#endif
     {VIDEO_COLORFORMAT_NV12M_SBWC,        VIDEO_COLORFORMAT_NV12M},
     {VIDEO_COLORFORMAT_NV12_10B_SBWC,     VIDEO_COLORFORMAT_NV12_S10B},
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12_10B_SBWC,     VIDEO_COLORFORMAT_NV12_P010_DECOMP},
+#endif
     {VIDEO_COLORFORMAT_NV12M_10B_SBWC,    VIDEO_COLORFORMAT_NV12M_P010},
     {VIDEO_COLORFORMAT_NV21M_SBWC,        VIDEO_COLORFORMAT_NV21M},
     {VIDEO_COLORFORMAT_NV21M_10B_SBWC,    VIDEO_COLORFORMAT_NV21M_P010},
+#ifndef LEGACY_MFC
     {VIDEO_COLORFORMAT_NV12_256_SBWC,     VIDEO_COLORFORMAT_NV12_DECOMP},
     {VIDEO_COLORFORMAT_NV12_10B_256_SBWC, VIDEO_COLORFORMAT_NV12_P010_DECOMP},
+#endif
 };
 
 static void __Set_InstInfo(ExynosVideoInstInfo *pVideoInstInfo, int mode) {
@@ -314,7 +329,9 @@ static void __Set_SupportFormat(ExynosVideoInstInfo *pVideoInstInfo) {
             (pVideoInstInfo->eCodecType == VIDEO_CODING_VP9)) {
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12_S10B;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12M_S10B;
+#ifndef LEGACY_MFC
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12_P010;
+#endif
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12M_P010;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV21M_S10B;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV21M_P010;

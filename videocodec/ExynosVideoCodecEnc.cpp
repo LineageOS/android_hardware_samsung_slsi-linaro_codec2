@@ -364,11 +364,13 @@ ExynosVideoErrorType ExynosVideoCodecEnc::CodecEncImpl::setDefaultConfig(
         return VIDEO_ERROR_APIFAIL;
     }
 
+#ifndef LEGACY_MFC
     /* GOP size is based on interval of I-frame */
     if (std::get<ExynosVideoEncOps>(mCommonOps).Set_GopMode(mHandle, VIDEO_FRAME_I) != VIDEO_ERROR_NONE) {
         ExynosLogE("[%s] Set_GopMode() is failed", __FUNCTION__);
         return VIDEO_ERROR_APIFAIL;
     }
+#endif
 
     /* dynamic framerate */
     {
@@ -1504,9 +1506,12 @@ void ExynosVideoCodecEnc::applyConfig_RealTimePriority(ExynosParams &params) {
 
     if (err == VIDEO_ERROR_NONE) {
         ExynosLogD("[%s] RealTime priority is %d", __FUNCTION__, param->m.value);
-    } else {
+    }
+#ifndef LEGACY_MFC
+    else {
         ExynosLogE("[%s] Set_RealTimePriority(%d) is failed", __FUNCTION__, param->m.value);
     }
+#endif
 }
 
 void ExynosVideoCodecEnc::applyConfig_AverageQp(ExynosParams &params) {
