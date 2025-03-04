@@ -297,7 +297,9 @@ static void __Set_SupportFormat(ExynosVideoInstInfo *pVideoInstInfo) {
             (pVideoInstInfo->eCodecType == VIDEO_CODING_VP9)) {
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12_S10B;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12M_S10B;
+#ifndef LEGACY_MFC
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12_P010;
+#endif
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV12M_P010;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV21M_S10B;
             pVideoInstInfo->supportFormat[nLastIndex++] = VIDEO_COLORFORMAT_NV21M_P010;

@@ -67,6 +67,9 @@ cc_library_static {
     }) + select(soong_config_variable("openmax", "use_epoll"), {
         "false": [],
         default: ["-DUSE_EPOLL"],
+    }) + select(soong_config_variable("openmax", "legacy_mfc"), {
+        "true": ["-DLEGACY_MFC"],
+        default: [],
     }),
 
     header_libs: [
