@@ -52,6 +52,24 @@
       "parentUuid": "e0d851f2_32822b4c",
       "revId": "53749c05d38753b081d95498d58ba6e0b5e23f2d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd1bbcb_fcd64894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-04-06T13:06:15Z",
+      "side": 1,
+      "message": "kernel_headers module just defines a module based on the headers from TARGET_BOARD_KERNEL_HEADERS so it isn\u0027t actually empty, just providing device_kernel_headers under a different module name.\nThe reason why I did this is because lineage build/soong automatically replaces device_kernel_headers with generated_kernel_headers which causes a build incompatibility here",
+      "parentUuid": "c23ccaee_02f6527d",
+      "revId": "53749c05d38753b081d95498d58ba6e0b5e23f2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
