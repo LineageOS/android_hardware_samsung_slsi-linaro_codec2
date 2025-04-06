@@ -34,6 +34,24 @@
       "parentUuid": "a9ae3161_2c5a66d8",
       "revId": "53749c05d38753b081d95498d58ba6e0b5e23f2d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23ccaee_02f6527d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 17401
+      },
+      "writtenOn": "2025-04-06T13:03:00Z",
+      "side": 1,
+      "message": "checked it, you\u0027re right, still seems pointless to define an empty `exynos_codec2_kernel_headers` instead of just removing `device_kernel_headers`",
+      "parentUuid": "e0d851f2_32822b4c",
+      "revId": "53749c05d38753b081d95498d58ba6e0b5e23f2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
