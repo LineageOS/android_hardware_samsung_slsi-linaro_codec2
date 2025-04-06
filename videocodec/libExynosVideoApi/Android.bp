@@ -70,7 +70,7 @@ cc_library_static {
     }),
 
     header_libs: [
-        "device_kernel_headers",
+        "exynos_codec2_kernel_headers",
         "libexynos_videoapi_headers",
         "libexynos_headers",
     ],

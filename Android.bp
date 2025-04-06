@@ -22,6 +22,11 @@ license {
     ],
 }
 
+kernel_headers {
+    name: "exynos_codec2_kernel_headers",
+    vendor: true,
+}
+
 cc_library_headers {
     name: "libexynosc2_base_headers",
     proprietary: true,
@@ -30,7 +35,7 @@ cc_library_headers {
     header_libs: [
         "libsystem_headers",
         "libcutils_headers",
-        "device_kernel_headers",
+        "exynos_codec2_kernel_headers",
     ],
     export_header_lib_headers: [
         "libsystem_headers",
