@@ -16,6 +16,23 @@
       "message": "Updated commit message, is it fine like this?",
       "revId": "b8e0086f4c373a7991fef395674c25a5317cea27",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5483ebbf_84efde10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2025-04-06T14:01:35Z",
+      "side": 1,
+      "message": "If this is the same issue as qcom then for reference this is what we\u0027ve been doing https://review.lineageos.org/c/LineageOS/android_kernel_qcom_sm8550/+/416783",
+      "revId": "b8e0086f4c373a7991fef395674c25a5317cea27",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
