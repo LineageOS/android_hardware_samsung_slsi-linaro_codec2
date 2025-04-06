@@ -88,6 +88,24 @@
       "parentUuid": "fd862055_d589f1ae",
       "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6128980f_bf7d1d1f",
+        "filename": "videocodec/libExynosVideoApi/osal/ExynosVideo_OSAL.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2547,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-04-06T09:06:59Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_hardware_samsung_slsi-linaro_codec2/+/426135 explains this compile issue.",
+      "parentUuid": "632d30c7_88fa56eb",
+      "revId": "634ce6b3a3d8ccf3c5f69bc638954f9c4fbebe96",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
