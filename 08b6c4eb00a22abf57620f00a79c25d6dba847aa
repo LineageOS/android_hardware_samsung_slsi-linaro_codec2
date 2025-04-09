@@ -16,6 +16,23 @@
       "message": "bump to 22.2",
       "revId": "08b6c4eb00a22abf57620f00a79c25d6dba847aa",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d66b5789_1a8b02c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34512
+      },
+      "writtenOn": "2025-04-09T10:25:50Z",
+      "side": 1,
+      "message": "tested on a21s (exynos 850), decoders work, encoders are broken",
+      "revId": "08b6c4eb00a22abf57620f00a79c25d6dba847aa",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
