@@ -16,6 +16,23 @@
       "message": "I don\u0027t see what problem you are facing but the xml config was found for me.\n\nD MediaCodecsXmlParser: parsing vendor/etc/media_codecs_c2.xml...",
       "revId": "075d31244ba1ae7ff85ec969b61ca9e6565818b7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d045bd7_699d6da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34512
+      },
+      "writtenOn": "2025-05-09T14:28:46Z",
+      "side": 1,
+      "message": "abandon? since not needed",
+      "revId": "075d31244ba1ae7ff85ec969b61ca9e6565818b7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
