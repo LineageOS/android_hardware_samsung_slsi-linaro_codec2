@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ae7dd8_b2bd66a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2025-09-06T23:43:42Z",
+      "side": 1,
+      "message": "seems fine. Remind me, what kernel version is s5e8825 on?",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
