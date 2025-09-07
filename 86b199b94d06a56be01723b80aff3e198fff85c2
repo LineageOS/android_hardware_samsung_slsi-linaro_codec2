@@ -18,6 +18,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b646682b_9331caf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-09-07T04:27:56Z",
+      "side": 1,
+      "message": "s5e8825 uses kernel 5.10 so I\u0027m not sure how this change is related?\ncodec2 works fine for me on gta4xlswifi (s5e8825) with I534145c9d4233dbd21f993dc4bc690e6864eac3c\nand the two changes in gta4xls kernel",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b2e3c7_07e83d49",
