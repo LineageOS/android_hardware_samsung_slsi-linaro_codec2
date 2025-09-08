@@ -35,6 +35,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e526bf2_a9d84d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35835
+      },
+      "writtenOn": "2025-09-08T11:06:13Z",
+      "side": 1,
+      "message": "Yeah but on troika encoders were fine, decoders were broken. Before decoders were broken too on s5e8825 but this was fixed so I can say that both encoders and decoders work.",
+      "parentUuid": "b646682b_9331caf6",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b2e3c7_07e83d49",
