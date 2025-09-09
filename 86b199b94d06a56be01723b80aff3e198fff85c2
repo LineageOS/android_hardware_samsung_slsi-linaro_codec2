@@ -53,6 +53,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d82fb0b_b77fd8ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-09-09T05:58:54Z",
+      "side": 1,
+      "message": "On s5e8825 I83ef5980a232668f24daa7fa85d678e40b3b7443 and If43f72ffd4c4cf00c778c309ab300fccbefcb155 are what you\u0027re looking for. You shouldn\u0027t need to enable legacy MFC there.",
+      "parentUuid": "9e526bf2_a9d84d76",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b2e3c7_07e83d49",
