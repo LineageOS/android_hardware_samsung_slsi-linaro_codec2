@@ -89,6 +89,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110ab788_50a25d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 25925
+      },
+      "writtenOn": "2025-09-09T07:49:40Z",
+      "side": 1,
+      "message": "No it isn\u0027t, because this patch is targeted at legacy devices that use OMX on stock which none of the s5e8825 devices does. There\u0027s no reason to merge this change until it is fully functional on the mentioned legacy devices.",
+      "parentUuid": "6714d250_f6935bfa",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b2e3c7_07e83d49",
