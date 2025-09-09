@@ -125,6 +125,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1279d3_73d0aae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35835
+      },
+      "writtenOn": "2025-09-09T21:56:58Z",
+      "side": 1,
+      "message": "Hey @tim@linux4.de are you sure that hardware C2 is working without legacy mfc? I tried disabling it with your kernel and linaro changes and i got this https://pastebin.com/cu7w1DtM while trying to decode a video i recorded (screen recording btw). Can you test this on your gta4xlswifi and make sure that legacy mfc is not needed? Thanks",
+      "parentUuid": "3f91865e_0a942ac2",
+      "revId": "86b199b94d06a56be01723b80aff3e198fff85c2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b2e3c7_07e83d49",
