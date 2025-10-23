@@ -33,6 +33,24 @@
       "message": "Should we create a lineage-23.0 branch for this?",
       "revId": "8adfa33c3d9ec6e031285a613628250ea29fd003",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ad6b00_5c4e5e29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35850
+      },
+      "writtenOn": "2025-10-23T10:16:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f98e85_09428416",
+      "revId": "8adfa33c3d9ec6e031285a613628250ea29fd003",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
