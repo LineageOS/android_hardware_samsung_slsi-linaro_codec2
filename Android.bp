@@ -204,6 +204,12 @@ cc_defaults {
     }) + select(soong_config_variable("openmax", "USE_GDC"), {
         "true": ["-DUSE_GDC_FILTER"],
         default: [],
+    }) + select(soong_config_variable("openmax", "USE_HDR10PLUS_STAT_ENC"), {
+        "true": ["-DUSE_HDR10PLUS_STAT_ENC_FILTER"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "HDR_DYNAMIC_META_LIB"), {
+        any @ lib: ["-DHDR_DYNAMIC_META_LIB=\"" + lib + "\""],
+        default: [],
     }),
 }
 
@@ -287,6 +293,12 @@ cc_library_shared {
         "filter/codec/hevc/Exynos_HevcWFDEnc_Filter.cpp",
     ] + select(soong_config_variable("openmax", "USE_GDC"), {
         "true": ["filter/gdc/Exynos_GDC_Filter.cpp"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_HDR10PLUS_STAT_ENC"), {
+        "true": [
+            "filter/postprocess/Exynos_External_Filter.cpp",
+            "filter/postprocess/Exynos_HDR10PlusStatEnc_Filter.cpp",
+        ],
         default: [],
     }),
 
