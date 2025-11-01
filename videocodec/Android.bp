@@ -54,6 +54,9 @@ cc_library_static {
     }) + select(soong_config_variable("openmax", "SUPPORT_MFC_ENC_BT2020"), {
         "true": ["-DBOARD_SUPPORT_MFC_ENC_BT2020"],
         default: [],
+    }) + select(soong_config_variable("openmax", "USE_FLEXIBLE_P010"), {
+        "true": ["-DUSE_FLEXIBLE_P010"],
+        default: [],
     }),
     header_libs: [
         "libexynosc2_videocodec_headers",

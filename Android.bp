@@ -87,7 +87,10 @@ cc_library_shared {
         "-Wno-deprecated-enum-enum-conversion",
         "-std=gnu++1z",
         "-std=c++2a",
-    ],
+    ] + select(soong_config_variable("openmax", "USE_FLEXIBLE_P010"), {
+        "true": ["-DUSE_FLEXIBLE_P010"],
+        default: [],
+    }),
     header_libs: [
         "libexynosc2_base_headers",
         "libexynosc2_osal_headers",
@@ -122,6 +125,9 @@ cc_defaults {
     ],
     cflags: [] + select(soong_config_variable("openmax", "USE_SW_CSC"), {
         "true": ["-DUSE_SW_CSC"],
+        default: [],
+    }) + select(soong_config_variable("openmax", "USE_FLEXIBLE_P010"), {
+        "true": ["-DUSE_FLEXIBLE_P010"],
         default: [],
     }),
     header_libs: [
@@ -162,10 +168,7 @@ cc_defaults {
         "c2component/Exynos_C2_EncComponent.cpp",
         "filter/codec/Exynos_CodecEncBase_Filter.cpp",
     ],
-    cflags: [] + select(soong_config_variable("openmax", "USE_FLEXIBLE_P010"), {
-        "true": ["-DUSE_FLEXIBLE_P010"],
-        default: [],
-    }) + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+    cflags: [] + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
         "true": ["-DUSE_FULL_ST2094_40"],
         default: [],
     }) + select(soong_config_variable("openmax", "GPU_TYPE"), {
