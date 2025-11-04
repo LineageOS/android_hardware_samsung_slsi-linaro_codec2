@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e034609b_83646aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24387
+      },
+      "writtenOn": "2025-11-04T20:41:57Z",
+      "side": 1,
+      "message": "Verified on Samsung Galaxy S24",
+      "revId": "a45fcb042b2b0313d4b13b61e5c31b2129c26ed3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
