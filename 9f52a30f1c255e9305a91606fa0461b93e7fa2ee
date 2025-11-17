@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a71cbf_7ea3f8ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35835
+      },
+      "writtenOn": "2025-11-17T19:57:13Z",
+      "side": 1,
+      "message": "This is no longer needed on s5e8825 (and s5e9925). It \"was\" needed before for H264/HEVC decoding but now It\u0027s fine after Implementing missing MFC IOCTL from s5e9945 (https://github.com/exynos1280/android_kernel_samsung_s5e8825/commit/0f885d194baaed657ad05bc4ff0d8d5cd4a2f4e5).",
+      "revId": "9f52a30f1c255e9305a91606fa0461b93e7fa2ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
