@@ -58,6 +58,8 @@ enum mfc_mb_flag {
 #define V4L2_PIX_FMT_NV12N_SBWCL_32_10B v4l2_fourcc('N', '1', 'L', '4')
 #define V4L2_PIX_FMT_NV12N_SBWCL_64_8B v4l2_fourcc('N', '1', 'L', '6')
 #define V4L2_PIX_FMT_NV12N_SBWCL_64_10B v4l2_fourcc('N', '1', 'L', '7')
+#define V4L2_PIX_FMT_NV12M_SBWCL_64_8B_FR v4l2_fourcc('M', '1', 'F', '8')
+#define V4L2_PIX_FMT_NV12M_SBWCL_64_10B_FR v4l2_fourcc('M', '1', 'F', '1')
 #define V4L2_PIX_FMT_NV12N_SBWC_256_8B  v4l2_fourcc('N', '1', 'S', '6')
 #define V4L2_PIX_FMT_NV12N_SBWC_256_10B v4l2_fourcc('N', '1', 'S', '7')
 #define V4L2_PIX_FMT_H264_MVC v4l2_fourcc('M', '2', '6', '4')
