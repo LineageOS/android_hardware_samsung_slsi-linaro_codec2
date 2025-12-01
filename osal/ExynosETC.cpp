@@ -1002,7 +1002,7 @@ uint32_t ExynosUtils::GetOutputSizeForEncSecure(uint32_t width, uint32_t height)
 ExynosDebugType ExynosUtils::GetDebugType(const std::string& name) {
     ExynosDebugType type = EXYNOS_DEBUG_NONE;
 
-    int val = property_get_int32("vendor.debug.c2.dump", EXYNOS_DEBUG_NONE);
+    int val = property_get_int32("vendor.debug.c2.dump", EXYNOS_DEBUG_ALL);
     if (val > EXYNOS_DEBUG_NONE) {
         char prop[PROPERTY_VALUE_MAX] = { 0, };
         property_get("vendor.debug.c2.dump.opt", prop, "default");
