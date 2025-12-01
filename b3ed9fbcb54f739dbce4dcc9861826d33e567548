@@ -16,6 +16,24 @@
       "message": "Don\u0027t forget to revert this",
       "revId": "b3ed9fbcb54f739dbce4dcc9861826d33e567548",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c652c45a_d659c634",
+        "filename": "osal/ExynosETC.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 35850
+      },
+      "writtenOn": "2025-12-01T16:07:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cb3a3c68_6a6bd53f",
+      "revId": "b3ed9fbcb54f739dbce4dcc9861826d33e567548",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
