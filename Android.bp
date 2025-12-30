@@ -171,12 +171,6 @@ cc_defaults {
     cflags: [] + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
         true: ["-DUSE_FULL_ST2094_40"],
         default: [],
-    }) + select(soong_config_variable("openmax", "GPU_TYPE"), {
-        "sgpu": [
-            "-DHW_GPU_ALIGN=256",
-            "-DYV12_ALIGN=512",
-        ],
-        default: [],
     }) + select(soong_config_variable("openmax", "USE_SUPPORT_GPU_SBWC"), {
         true: ["-DUSE_SUPPORT_GPU_SBWC"],
         default: [],
