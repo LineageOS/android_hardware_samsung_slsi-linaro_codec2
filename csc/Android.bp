@@ -42,7 +42,13 @@ cc_library_static {
         "-Wall",
         "-std=gnu++1z",
         "-std=c++2a",
-    ],
+    ] + select(soong_config_variable("openmax", "GPU_TYPE"), {
+        "sgpu": [
+            "-DHW_GPU_ALIGN=256",
+        ],
+        default: [],
+    }),
+
     header_libs: [
         "libexynosc2_csc_headers",
         "libexynos_headers",
