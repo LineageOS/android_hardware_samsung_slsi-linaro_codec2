@@ -14,30 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// #define LOG_NDEBUG 0
-#ifdef USE_CODEC2_HIDL_1_2
-#define LOG_TAG "samsung.hardware.media.c2@1.2-service"
 
-#include <codec2/hidl/1.2/ComponentStore.h>
-using namespace ::android::hardware::media::c2::V1_2;
-#else
-#define LOG_TAG "samsung.hardware.media.c2@1.0-service"
+//#define LOG_NDEBUG 0
+#define LOG_TAG "samsung.hardware.media.c2-service"
 
-#include <codec2/hidl/1.0/ComponentStore.h>
-using namespace ::android::hardware::media::c2::V1_0;
-#endif
-
-#include <hidl/HidlTransportSupport.h>
-#include <binder/ProcessState.h>
+#include <android/binder_manager.h>
+#include <android/binder_process.h>
 #include <minijail.h>
 
+#include <util/C2InterfaceHelper.h>
 #include <C2Component.h>
-#include <C2PlatformSupport.h>
+#include <C2Config.h>
+
+#include <codec2/aidl/ComponentStore.h>
+#include <codec2/aidl/ParamTypes.h>
 
 #include "C2ExynosSupport.h"
 
-// OmxStore is added for visibility by dumpstate.
-#include <media/stagefright/omx/1.0/OmxStore.h>
+using namespace ::aidl::android::hardware::media::c2;
 
 // This is created by module "codec2.vendor.base.policy". This can be modified.
 static constexpr char kBaseSeccompPolicyPath[] =
@@ -48,37 +42,36 @@ static constexpr char kExtSeccompPolicyPath[] =
         "/vendor/etc/seccomp_policy/codec2.vendor.ext.policy";
 
 int main(int /* argc */, char** /* argv */) {
-    ALOGI("media hwcodec service starting");
+    ALOGI("samsung.hardware.media.c2-service starting...");
     signal(SIGPIPE, SIG_IGN);
     android::SetUpMinijail(kBaseSeccompPolicyPath, kExtSeccompPolicyPath);
 
-    // vndbinder is needed by BufferQueue.
-    android::ProcessState::initWithDriver("/dev/vndbinder");
-    android::ProcessState::self()->startThreadPool();
+    ABinderProcess_setThreadPoolMaxThreadCount(8);
+    ABinderProcess_startThreadPool();
 
-    // Extra threads may be needed to handle a stacked IPC sequence that
-    // contains alternating binder and hwbinder calls. (See b/35283480.)
-    android::hardware::configureRpcThreadpool(8, true /* callerWillJoin */);
+    // Create IComponentStore service.
+    std::shared_ptr<IComponentStore> store;
 
-    /* RegisterCodecServices() */
-    {
-        android::sp<IComponentStore> store;
-
-        ALOGI("Creating vendor Codec2 service...");
-
-        store = new utils::ComponentStore(std::static_pointer_cast<C2ComponentStore>(android::GetCodec2ExynosComponentStore()));
-        if (store == nullptr) {
-            ALOGE("Cannot create vendor Codec2 service.");
+    ALOGD("Instantiating Codec2's Vendor IComponentStore service...");
+    store = ::ndk::SharedRefBase::make<utils::ComponentStore>(std::static_pointer_cast<C2ComponentStore>(android::GetCodec2ExynosComponentStore()));
+    
+    if (store == nullptr) {
+        ALOGE("Cannot create Codec2's Vendor IComponentStore service.");
+    } else {
+        const std::string serviceName =
+            std::string(IComponentStore::descriptor) + "/default";
+        binder_exception_t ex = AServiceManager_addService(
+                store->asBinder().get(), serviceName.c_str());
+        if (ex != EX_NONE) {
+            ALOGE("Cannot register Codec2's Vendor IComponentStore service"
+                          " with instance name %s", serviceName.c_str());
         } else {
-            if (store->registerAsService("default") != android::OK) {
-                ALOGE("Cannot register vendor Codec2 service.");
-            } else {
-                ALOGI("Vendor Codec2 service created.");
-            }
+            ALOGE("Codec2's Vendor IComponentStore service registered. "
+                          "Instance name: %s", serviceName.c_str());
         }
     }
 
-    android::hardware::joinRpcThreadpool();
+    ABinderProcess_joinThreadPool();
 
     return 0;
 }
