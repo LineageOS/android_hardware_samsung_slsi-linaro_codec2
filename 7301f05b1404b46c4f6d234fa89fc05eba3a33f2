@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76afdd4_e85c9b4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34219
+      },
+      "writtenOn": "2026-01-31T18:08:47Z",
+      "side": 1,
+      "message": "I suggest adding a utils::IsSelected() check before starting the binder thread pool, similar to Pixel behavior:\n\nif (!utils::IsSelected()) {\n    ALOGE(\"AIDL Codec2 is not selected, check property: media.c2.hal.selection\");\n    return 0;\n}\n\nThis avoids starting the AIDL Codec2 service when it is not selected via media.c2.hal.selection.",
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6ab844_f174ae68",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 34219
+      },
+      "writtenOn": "2026-01-31T18:08:47Z",
+      "side": 1,
+      "message": "It might be better to add a utils::IsSelected() check before starting the binder thread pool, similar to Pixel behavior:\n\nif (!utils::IsSelected()) {\n    ALOGE(\"AIDL Codec2 is not selected, check property: media.c2.hal.selection\");\n    return 0;\n}",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e97b1b_2127099f",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 34219
+      },
+      "writtenOn": "2026-01-31T18:08:47Z",
+      "side": 1,
+      "message": "This is a success path, so it should be ALOGI, not ALOGE",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
