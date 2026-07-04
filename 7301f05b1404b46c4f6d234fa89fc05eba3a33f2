@@ -41,6 +41,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f678d5_e1193ac8",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 35850
+      },
+      "writtenOn": "2026-07-04T11:50:38Z",
+      "side": 1,
+      "message": "I don\u0027t see a point in adding such prop if we only have an AIDL C2 service",
+      "parentUuid": "ba6ab844_f174ae68",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68e97b1b_2127099f",
