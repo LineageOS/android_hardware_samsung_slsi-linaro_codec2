@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c015559_0938fd73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 24387
+      },
+      "writtenOn": "2026-07-04T11:52:00Z",
+      "side": 1,
+      "message": "I am not sure this prop is really needed as we only have AIDL codec2. Can you point to the code of the mentioned pixel behavior ?",
+      "parentUuid": "f76afdd4_e85c9b4d",
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6ab844_f174ae68",
@@ -67,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c582ae72_de122ad2",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 24387
+      },
+      "writtenOn": "2026-07-04T11:52:00Z",
+      "side": 1,
+      "message": "I am not sure this prop is really needed as we only have AIDL codec2. Can you point to the code of the mentioned pixel behavior ?",
+      "parentUuid": "ba6ab844_f174ae68",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68e97b1b_2127099f",
         "filename": "services/vendor.cpp",
         "patchSetId": 3
@@ -101,6 +143,30 @@
       "writtenOn": "2026-07-04T11:50:56Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "68e97b1b_2127099f",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "7301f05b1404b46c4f6d234fa89fc05eba3a33f2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c502e894_b5173f01",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 24387
+      },
+      "writtenOn": "2026-07-04T11:52:00Z",
+      "side": 1,
+      "message": "Correct",
       "parentUuid": "68e97b1b_2127099f",
       "range": {
         "startLine": 72,
