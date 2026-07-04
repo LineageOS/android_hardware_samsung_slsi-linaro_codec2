@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca22b6b_61bdfbd3",
+        "filename": "services/vendor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-07-04T12:01:39Z",
+      "side": 0,
+      "message": "Keep original indentation.",
+      "revId": "c8a7e01120792080dd516481c98a6ea02ffa8b06",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
