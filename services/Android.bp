@@ -42,7 +42,10 @@ cc_defaults {
         "frameworks/av/media/libstagefright/include",
         "frameworks/native/include",
         "frameworks/av/media/codec2/vndk/include",
-    ],
+    ] + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+        true: ["-DUSE_FULL_ST2094_40"],
+        default: [],
+    }),
     shared_libs: [
         "libavservices_minijail",
         "libbinder",
