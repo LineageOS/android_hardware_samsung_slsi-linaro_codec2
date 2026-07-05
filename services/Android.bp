@@ -26,7 +26,10 @@ cc_defaults {
         "-Werror",
         "-Wall",
         "-Wno-unused-parameter",
-    ],
+    ] + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+        true: ["-DUSE_FULL_ST2094_40"],
+        default: [],
+    }),
     srcs: ["vendor.cpp"],
     include_dirs: [
         "frameworks/av/media/libstagefright/include",

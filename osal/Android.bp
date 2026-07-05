@@ -40,7 +40,10 @@ cc_library_static {
         "-Wall",
         "-std=gnu++1z",
         "-std=c++2a",
-    ],
+    ] + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+        true: ["-DUSE_FULL_ST2094_40"],
+        default: [],
+    }),
     header_libs: [
         "libexynosc2_base_headers",
         "libexynosc2_osal_headers",
