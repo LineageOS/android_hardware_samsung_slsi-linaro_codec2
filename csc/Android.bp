@@ -47,6 +47,9 @@ cc_library_static {
             "-DHW_GPU_ALIGN=256",
         ],
         default: [],
+    }) + select(soong_config_variable("openmax", "USE_FULL_ST2094_40"), {
+        true: ["-DUSE_FULL_ST2094_40"],
+        default: [],
     }),
 
     header_libs: [
