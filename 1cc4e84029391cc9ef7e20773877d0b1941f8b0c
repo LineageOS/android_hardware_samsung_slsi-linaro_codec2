@@ -16,6 +16,23 @@
       "message": "working properly on a25x (s5e8825)",
       "revId": "1cc4e84029391cc9ef7e20773877d0b1941f8b0c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af4ad6b_339705ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 36705
+      },
+      "writtenOn": "2026-07-05T23:46:29Z",
+      "side": 1,
+      "message": "Works fine on a53x (s5e8825) too",
+      "revId": "1cc4e84029391cc9ef7e20773877d0b1941f8b0c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
