@@ -18,21 +18,13 @@ prebuilt_etc {
     required: ["crash_dump.policy"],
 }
 
-cc_defaults {
-    name: "codec_hidl_defaults",
-    defaults: ["codec_defaults"],
-    srcs: ["1.2/vendor.cpp"],
-    shared_libs: [
-        "android.hardware.media.omx@1.0",
-        "libhidlbase",
-        "libstagefright_omx",
-    ]
-}
-
-cc_defaults {
-    name: "codec_defaults",
+cc_binary {
+    name: "samsung.hardware.media.c2-service",
+    init_rc: ["samsung.hardware.media.c2-service.rc"],
+    vintf_fragments: ["samsung.hardware.media.c2-service.xml"],
     vendor: true,
     relative_install_path: "hw",
+    srcs: ["vendor.cpp"],
     cflags: [
         "-Werror",
         "-Wall",
@@ -42,73 +34,32 @@ cc_defaults {
         default: [],
     }),
     include_dirs: [
+        "frameworks/av/media/codec2/hal/aidl/include",
+        "frameworks/av/media/codec2/vndk/include",
         "frameworks/av/media/libstagefright/include",
         "frameworks/native/include",
-        "frameworks/av/media/codec2/vndk/include",
     ],
     shared_libs: [
+        "android.hardware.media.c2-V1-ndk",
+        "libExynosC2ComponentStore",
         "libavservices_minijail",
         "libbinder",
+        "libbinder_ndk",
+        "libcodec2",
+        "libcodec2_aidl",
+        "libcodec2_hal_common",
         "libcodec2_vndk",
         "liblog",
         "libstagefright_xmlparser",
         "libutils",
-        "libExynosC2ComponentStore",
+        "server_configurable_flags",
     ],
     header_libs: [
+        "libexynos_headers",
         "libexynosc2_base_headers",
         "libexynosc2_osal_headers",
         "media_plugin_headers",
-        "libexynos_headers",
     ]
-}
-
-cc_binary {
-    name: "samsung.hardware.media.c2-service",
-    defaults: ["codec_defaults"],
-    init_rc: ["aidl/samsung.hardware.media.c2-service.rc"],
-    vintf_fragments: ["aidl/samsung.hardware.media.c2-service.xml"],
-    srcs: ["aidl/vendor.cpp"],
-    include_dirs: ["frameworks/av/media/codec2/hal/aidl/include"],
-    shared_libs: [
-        "android.hardware.media.c2-V1-ndk",
-        "libcodec2_aidl",
-        "libcodec2",
-        "libcodec2_hal_common",
-        "server_configurable_flags",
-        "libbinder_ndk",
-    ],
-    required: [
-        "codec2.vendor.base.policy",
-        "codec2.vendor.ext.policy",
-    ],
-}
-
-cc_binary {
-    name: "samsung.hardware.media.c2@1.0-service",
-    defaults: ["codec_hidl_defaults"],
-    init_rc: ["1.2/samsung.hardware.media.c2@1.0-service.rc"],
-    include_dirs: ["frameworks/av/media/codec2/hal/hidl/1.0/utils/include"],
-    shared_libs: [
-        "android.hardware.media.c2@1.0",
-        "libcodec2_hidl@1.0",
-    ],
-    required: [
-        "codec2.vendor.base.policy",
-        "codec2.vendor.ext.policy",
-    ],
-}
-
-cc_binary {
-    name: "samsung.hardware.media.c2@1.2-service",
-    defaults: ["codec_hidl_defaults"],
-    init_rc: ["1.2/samsung.hardware.media.c2@1.2-service.rc"],
-    cflags: ["-DUSE_CODEC2_HIDL_1_2"],
-    include_dirs: ["frameworks/av/media/codec2/hal/hidl/1.2/utils/include"],
-    shared_libs: [
-        "android.hardware.media.c2@1.2",
-        "libcodec2_hidl@1.2",
-    ],
     required: [
         "codec2.vendor.base.policy",
         "codec2.vendor.ext.policy",
