@@ -16,6 +16,24 @@
       "message": "```suggestion\ncodec2: services: Cleanup Android.bp\n```",
       "revId": "286a83dcf47b40616d791eab265f514a9ae27da7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebca51cb_9d88404b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 36705
+      },
+      "writtenOn": "2026-09-19T18:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b4f1e3_444d98b6",
+      "revId": "286a83dcf47b40616d791eab265f514a9ae27da7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
