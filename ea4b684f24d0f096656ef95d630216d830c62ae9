@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5aeff4_53fa4d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34512
+      },
+      "writtenOn": "2026-09-21T20:17:37Z",
+      "side": 1,
+      "message": "talk about any functional changes in commit message.\n\nAlso have you verified it compiles and boots/functions as intended.",
+      "revId": "ea4b684f24d0f096656ef95d630216d830c62ae9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
